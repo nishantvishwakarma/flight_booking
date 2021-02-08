@@ -8,6 +8,16 @@ echo $passInfo;exit;
 function fetchAirCraftInfo(){
 $airCraft = new AirCraft();
 $airCraftInfo = $airCraft->getAirCraftDetails();
-echo 'nishant';exit;
+print_r($airCraftInfo);exit;
+}
+function assignSeats($firstname){
+$airCraft = new AirCraft();
+$seatAssign = $airCraft->assignSeatsToPassenger($firstname.'.json');
+$getSeats = $airCraft->getSeats();
+foreach ($getSeats as $key => $value) {
+	foreach ($value as $keys => $values) {
+		
+	}
+	}	
 }
 ?>
