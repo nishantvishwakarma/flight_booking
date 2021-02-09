@@ -3,7 +3,7 @@ include ('autoloading.php');
 function addPassenger($firstname, $lastname, $age, $gender){
 $addPass = new AddPassenger($firstname, $lastname, $age, $gender);
 $passInfo = $addPass->addPassenger();
-echo $passInfo;exit;
+print_r($passInfo);
 }
 function fetchAirCraftInfo(){
 $airCraft = new AirCraft();
