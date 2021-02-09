@@ -8,29 +8,25 @@ echo $passInfo;exit;
 function fetchAirCraftInfo(){
 $airCraft = new AirCraft();
 $airCraftInfo = $airCraft->getAirCraftDetails();
-print_r($airCraftInfo);exit;
+return $airCraftInfo;
 }
 function assignSeats($firstname){
-$airCraft = new AirCraft();
-$seatAssign = $airCraft->assignSeatsToPassenger($firstname.'.json');
-$getSeats = $airCraft->getSeats();
-foreach ($getSeats as $key => $value) {
-	foreach ($value as $keys => $values) {
-		// print_r($value);exit;
-		if ($keys == 'airbus_a380'){
-		if ($values->first_class > 0){
-			echo $keys.' Flight assigned to ' . $firstname. ' in first class.';exit;
-		}
-		elseif ($values->business > 0) {
-			echo 'Boeing 737 800 Flight assigned to ' . $firstname. ' in business class.';exit;
-		}
-	}
-	}
-	}	
+$seats = getSeatsAvailability();
+$airCraftInfo = fetchAirCraftInfo();
+$filghtDetails = array();
+foreach ($airCraftInfo['carrier_name'] as $key => $value) {
+$assignedFlight = 'Hello '.$key. ' flight is assigned to you with Terminal at '.$value;
+$filghtDetails['assigned_flight'] = $assignedFlight;
+}
+foreach ($airCraftInfo['brand_name'] as $key => $value) {
+$assignedBrand = 'Brand '.$key. ' is assigned to you with Model '.$value;
+$filghtDetails['assigned_brand'] = $assignedBrand;
+}
+print_r($filghtDetails);
 }
 function getSeatsAvailability(){
 $airCraft = new SeatAvailability();
 $getSeats = $airCraft->getSeatsAvailability();
-print_r($getSeats);exit;	
+return $getSeats;	
 }
 ?>
