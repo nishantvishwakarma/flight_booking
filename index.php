@@ -29,8 +29,8 @@ foreach ($getSeats as $key => $value) {
 	}	
 }
 function getSeatsAvailability(){
-$airCraft = new AirCraft();
-$getSeats = $airCraft->getSeats();
+$airCraft = new SeatAvailability();
+$getSeats = $airCraft->getSeatsAvailability();
 print_r($getSeats);exit;	
 }
 ?>
